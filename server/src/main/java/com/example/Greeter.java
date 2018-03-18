@@ -5,6 +5,8 @@ package com.example;
  */
 public class Greeter {
 
+  private int unusedVariable = 0;
+
   /**
    * This is a constructor.
    */
