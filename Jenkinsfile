@@ -15,7 +15,7 @@ pipeline {
 stages{
         stage('Build'){
             steps {
-                bat 'mvn clean package'
+                sh 'mvn clean package'
             }
             post {
                 success {
@@ -30,13 +30,13 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
                         // build job: 'Deploy-to-staging'
-                        bat "${params.cmder_bat_path} \"cp **/target/*.war ${params.tomcat_staging_path}\""
+                        sh "cp **/target/*.war ${params.tomcat_staging_path}"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "${params.cmder_bat_path} 'scp -i C:/Users/Admin/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps'"
+                        sh "scp -i C:/Users/Admin/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
