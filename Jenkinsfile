@@ -30,7 +30,7 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
                         // build job: 'Deploy-to-staging'
-                        bat "${params.cmder_bat_path} 'cp **/target/*.war ${params.tomcat_staging_path}'"
+                        bat "${params.cmder_bat_path} \"cp **/target/*.war ${params.tomcat_staging_path}\""
                     }
                 }
 
