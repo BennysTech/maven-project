@@ -28,7 +28,8 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        build job: 'Deploy-to-staging'
+                        // build job: 'Deploy-to-staging'
+                        bat "${params.cmder_bat_path} 'cp **/target/*.war "C:/Program Files/Apache Software Foundation/Tomcat 8.5 staging/webapps/"'"
                     }
                 }
 
