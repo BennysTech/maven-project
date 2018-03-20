@@ -4,6 +4,7 @@ pipeline {
     parameters {
          string(name: 'tomcat_dev', defaultValue: 'localhost', description: 'Staging Server')
          string(name: 'tomcat_prod', defaultValue: '34.244.110.173', description: 'Production Server')
+         string(name: 'cmder_bat_path', defaultValue: '"C:/cmder/startsh.bat"', description: 'Path to bat file to execute linux commands')
     }
 
     triggers {
@@ -13,7 +14,7 @@ pipeline {
 stages{
         stage('Build'){
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
             post {
                 success {
@@ -33,7 +34,7 @@ stages{
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i C:/Users/Admin/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                        bat "${params.cmder_bat_path} 'scp -i C:/Users/Admin/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps'"
                     }
                 }
             }
