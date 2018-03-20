@@ -5,7 +5,7 @@ pipeline {
          string(name: 'tomcat_dev', defaultValue: 'localhost', description: 'Staging Server')
          string(name: 'tomcat_prod', defaultValue: '34.244.110.173', description: 'Production Server')
          string(name: 'cmder_bat_path', defaultValue: '"C:/cmder/startsh.bat"', description: 'Path to bat file to execute linux commands')
-         string(name: 'tomcat_staging_path', defaultValue: '"C:/Program Files/Apache Software Foundation/Tomcat 8.5 staging/webapps/"', description: 'Path to Tomcat staging environment' )
+         string(name: 'tomcat_staging_path', defaultValue: '\'C:/Program Files/Apache Software Foundation/Tomcat 8.5 staging/webapps/\'', description: 'Path to Tomcat staging environment' )
     }
 
     triggers {
